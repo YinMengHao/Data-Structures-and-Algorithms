@@ -60,11 +60,6 @@ public class ArrayList<E> {
 		// 扩容
 		ensuerCapacity(size + 1);
 		
-		int tempSize = size;
-//		while (tempSize-- > index) {
-//			elements[tempSize + 1] = elements[tempSize];
-//			
-//		}
 		for (int i = size - 1; i >= index; i--) {
 			elements[i + 1] = elements[i];
 		}
@@ -79,14 +74,21 @@ public class ArrayList<E> {
 	 		elements[index] = elements[index + 1];
 	 		index++;
 		}
-		size--;
+		elements[--size] = null;
 		return old;
 	}
 	
 	public int indexOf(E element) {
-		for (int i = 0; i < size; i++) {
-			if (elements[i] == element) return i;
+		if (element == null) {
+			for (int i = 0; i < size; i++) {
+				if (elements[i] == null) return i;
+			}
+		} else {
+			for (int i = 0; i < size; i++) {
+				if (element.equals(elements[i])) return i;
+			}
 		}
+		
 		return ELEMENT_NOT_FOUND;
 	}
 	  
@@ -144,5 +146,11 @@ public class ArrayList<E> {
 		
 		return string.toString();
 	}
+	
+//	@Override
+//	public boolean equals(Object obj) {
+//		// TODO Auto-generated method stub
+//		return super.equals(obj);
+//	}
 
 }
