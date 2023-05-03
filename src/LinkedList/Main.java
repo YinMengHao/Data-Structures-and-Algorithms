@@ -1,7 +1,5 @@
-package List;
+package LinkedList;
 
-
-import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 import com.mh.Times;
@@ -13,7 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 				
-		List.ArrayList<Integer> list = new List.ArrayList<>();
+		List<Integer> list = new LinkedList<>();
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -22,10 +20,28 @@ public class Main {
 		list.add(60);
 
 		list.add(0, 100);
+		list.add(0, 1);
 //		list.remove(-1);
 		list.remove(1);
+		list.remove(6);
+		System.err.println(list.size());
 		System.out.println(list);
+		
+		List<Integer> aryList = new ArrayList<>();
+		aryList.add(10);
+		aryList.add(20);
+		aryList.add(30);
+		aryList.add(40);
+		aryList.add(50);
+		aryList.add(60);
 
+		aryList.add(0, 100);
+		aryList.add(0, 1);
+//		list.remove(-1);
+		aryList.remove(1);
+		aryList.remove(6);
+		System.err.println(aryList.size());
+		System.out.println(aryList);
 		
 		// 斐波那契数列
 		//0 1 1 2 3 5 8 13 。。。

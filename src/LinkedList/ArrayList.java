@@ -1,12 +1,10 @@
-package List;
+package LinkedList;
 import java.lang.Exception;
 import java.util.Iterator;
 // Dynamic Array
-public class ArrayList<E> {
-	private int size;
+public class ArrayList<E> extends AbstractList<E> {
 	private E[] elements;
 	private static final int DEFAULT_CAPATICY = 10;
-	private static final int ELEMENT_NOT_FOUND = -1;
 	
 	@SuppressWarnings("unchecked")
 	public ArrayList(int capaticy) {
@@ -25,34 +23,6 @@ public class ArrayList<E> {
 		size = 0;
 	}
 	
-	/*
-	 * 元素的数量
-	 * @return
-	 * **/
-	public int size() {
-		return size;
-	}
-	
-	/*
-	 * 是否为空
-	 * @return
-	 * */
-	public boolean isEmpty() {
-		return size == 0;
-	}
-	
-	/*
-	 * 是否包含某个元素
-	 * @return
-	 * */
-	public boolean contains(E element) {
-		return indexOf(element) != ELEMENT_NOT_FOUND;
-	}
-	
-	public void add(E element) {
-//		elements[size++] = element;
-		add(size, element);
-	}
 	
 	public void add(int index, E element) {
 		checkIndexForAdd(index);
@@ -106,19 +76,6 @@ public class ArrayList<E> {
 	public E get(int index) {
 		checkIndex(index);
 		return elements[index];
-	}
-	
-	private void checkIndex(int index) {
-		if (index < 0 || index >= size) {
-			String resultString = "Index: " + index + ", Size: " + size;
-			throw new IndexOutOfBoundsException(resultString);
-		} 
-	}
-	
-	private void checkIndexForAdd(int index) {
-		if (index < 0 || index > size) {
-			throw new IndexOutOfBoundsException("Index:" + index + ", Size:" + size);
-		}
 	}
 	
 	@SuppressWarnings("unchecked")
