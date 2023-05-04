@@ -39,6 +39,7 @@ public class ArrayList<E> extends AbstractList<E> {
 	
 	public E remove(int index) {
 		checkIndex(index);
+		trim();
 		E old = elements[index];
 		while (size > index) {
 	 		elements[index] = elements[index + 1];
@@ -79,11 +80,26 @@ public class ArrayList<E> extends AbstractList<E> {
 	}
 	
 	@SuppressWarnings("unchecked")
+	private void trim() {
+		int oldCapacity = elements.length;
+		int newCapacity = oldCapacity >> 1;
+		if (size >= (newCapacity) || oldCapacity <= DEFAULT_CAPATICY) return;
+		
+		// 剩余空间还很多
+		E[] newElements = (E[])new Object[newCapacity];
+		for (int i = 0; i < size; i++) {
+			newElements[i] = elements[i];
+		}
+		elements = newElements;
+		System.out.println(oldCapacity + "缩容为：" + newCapacity);
+	}
+	
+	@SuppressWarnings("unchecked")
 	private void ensuerCapacity(int capacity) {
 		int oldCapacity = elements.length;
 		if (oldCapacity >= capacity) return;
 		// 新容量是旧容量的1.5倍
-		int newCapacity = capacity + capacity >> 1;
+		int newCapacity = capacity + (capacity >> 1);
 		E[] newElements =(E[])new Object[newCapacity];
 		for (int i = 0; i < size; i++) {
 			newElements[i] = elements[i];

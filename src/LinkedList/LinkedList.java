@@ -1,7 +1,5 @@
 package LinkedList;
 
-import java.util.Iterator;
-
 public class LinkedList<E> extends AbstractList<E> {
 	private Node<E> first;
 	
@@ -41,6 +39,7 @@ public class LinkedList<E> extends AbstractList<E> {
 	@Override
 	public void add(int index, E element) {
 		// TODO Auto-generated method stub
+		checkIndexForAdd(index);
 		if (index == 0) {
 			first = new Node<>(element, first);
 		} else {
@@ -53,6 +52,7 @@ public class LinkedList<E> extends AbstractList<E> {
 	@Override
 	public E remove(int index) {
 		// TODO Auto-generated method stub
+		checkIndex(index);
 		Node<E> node = first;
 		if (index == 0) {
 			first = first.next;
