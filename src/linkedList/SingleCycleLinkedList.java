@@ -1,6 +1,6 @@
-package LinkedList;
+package linkedList;
 
-public class LinkedList<E> extends AbstractList<E> {
+public class SingleCycleLinkedList<E> extends AbstractList<E> {
 	private Node<E> first;
 	
 	// 内部类
@@ -41,7 +41,12 @@ public class LinkedList<E> extends AbstractList<E> {
 		// TODO Auto-generated method stub
 		checkIndexForAdd(index);
 		if (index == 0) {
-			first = new Node<>(element, first);
+			Node<E> newFirst = new Node<>(element, first);
+			
+			// 获取最后一个节点
+			Node<E> last = (size == 0) ? first : node(size - 1);
+			last.next = newFirst;
+			first = newFirst;
 		} else {
 			Node<E> pre = node(index - 1);
 			pre.next = new Node<>(element, pre.next);
@@ -55,7 +60,15 @@ public class LinkedList<E> extends AbstractList<E> {
 		checkIndex(index);
 		Node<E> node = first;
 		if (index == 0) {
-			first = first.next;
+			if (size == 1) {
+				first = null;
+			} else {
+				Node<E> last = node(size - 1);
+				first = first.next;
+				last.next = first;
+			}
+			
+
 		} else {
 			Node<E> pre = node(index - 1);
 			node = pre.next;

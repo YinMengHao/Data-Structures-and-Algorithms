@@ -1,4 +1,4 @@
-package LinkedList;
+package linkedList;
 import java.lang.Exception;
 import java.util.Iterator;
 // Dynamic Array

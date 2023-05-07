@@ -1,6 +1,6 @@
-package LinkedList;
+package linkedList;
 
-public class CycleLinkedList<E> extends AbstractList<E> {
+public class LinkedList<E> extends AbstractList<E> {
 private Node<E> first;
 private Node<E> last;
 

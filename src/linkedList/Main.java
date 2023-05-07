@@ -1,18 +1,31 @@
-package LinkedList;
+package linkedList;
 
-import java.util.zip.Inflater;
-
-import com.mh.Asserts;
-import com.mh.Times;
-import com.mh.Times.Block;
 
 public class Main {
+	
+	static void josephus() {
+		CircleLinkedList<Integer> list = new CircleLinkedList<>();
+		for (int i = 1; i < 9; i++) {
+			list.add(i);
+		}
+		
+		
+		
+		list.reset();
+		
+		while (!list.isEmpty()) {
+			list.next();
+			list.next();
+			System.out.println(list.remove());;
+		}
+		
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		josephus();
 				
-		List<Integer> list = new LinkedList<>();
+		List<Integer> list = new SingleLinkedList<>();
 //		list.remove(0);
 		list.add(10);
 		list.add(20);
@@ -53,18 +66,45 @@ public class Main {
 //		System.out.println(aryList.size());
 //		System.out.println(aryList);
 		
-		List<Integer> cycleList = new CycleLinkedList<>();
-		cycleList.add(10);
-		cycleList.add(20);
-		cycleList.add(30);
-		cycleList.add(40);
-		cycleList.add(0, 100);
-		cycleList.add(50);
-		cycleList.add(1, 1);
-		System.out.println(cycleList.size());
+		List<Integer> linkedList = new  CircleLinkedList<>();
+		linkedList.add(10);
+		linkedList.add(40);
+		linkedList.add(50);
+		linkedList.add(60);
+
+//		linkedList.add(0, 20);
+
+//		linkedList.add(60);
+//		linkedList.add(0, 100);
+//		linkedList.add(50);
+		linkedList.add(1, 1);
+		linkedList.add(0, 30);
+
+//		System.out.println(linkedList.size());
 //		System.out.println(cycleList.remove(cycleList.size() - 2));;
 //		
-//		System.out.println(cycleList);
+		System.out.println(linkedList);
+		
+		
+		
+		List<Integer> cycleList = new TestLinkedList<>();
+		
+		cycleList.add(10);
+		cycleList.add(40);
+		cycleList.add(50);
+		cycleList.add(60);
+
+
+//		cycleList.add(0, 20);
+		cycleList.add(1, 1);
+
+		cycleList.add(0, 30);
+
+
+		System.out.println(cycleList.size());
+		System.out.println(cycleList);
+
+		
 		
 		
 	
